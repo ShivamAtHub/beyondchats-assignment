@@ -1,86 +1,40 @@
 # BeyondChats – Content Management & Article Rewriting System
 
-BeyondChats is a full-stack web application that scrapes articles from beyondchats.com, stores them in a database, and uses AI-powered rewriting to enhance content quality using competitor articles as reference.
-
-It is designed for content managers who want to systematically collect, store, and improve articles through intelligent rewriting using Google's Gemini AI, with insights gathered from competitor content via Google Custom Search.
+BeyondChats is a full-stack content management system that scrapes articles from beyondchats.com, stores them in a database, and improves them using AI-assisted rewriting based on competitor content.
 
 This project focuses on clean architecture, reliable web scraping, intelligent content enhancement, and a modern, responsive UI built with React and Tailwind CSS.
 
 ## FEATURES
 
-- **Automated Article Scraping** – Scrapes articles from beyondchats.com/blogs with intelligent content extraction
-- **MySQL Database Storage** – Persistent storage for articles with original and updated content versions
-- **AI-Powered Rewriting** – Uses Google Gemini 2.5 Flash to rewrite articles based on competitor insights
-- **Competitor Research** – Automatically finds related articles using Google Custom Search API
-- **Content Comparison** – View original and updated versions side-by-side with tabbed interface
-- **Modern React UI** – Clean, responsive interface built with shadcn/ui and Tailwind CSS v4
-- **Dark/Light Theme** – Built-in theme switching for comfortable viewing
-- **Reference Links** – Tracks and displays competitor articles used for rewriting
-- **Error Handling & Retries** – Robust error handling with retry logic for API calls and scraping
+- Automated scraping of BeyondChats blog articles
+- Storage of original and rewritten content in MySQL
+- AI-based article rewriting using Google Gemini
+- Competitor article discovery via Google Custom Search
+- Simple React UI to compare original vs updated content
 
 ## TECH STACK
 
-**Backend:**
-- Node.js
-- Express.js
-- MySQL2
-- Axios
-- Cheerio (web scraping)
-- Google Custom Search API
-- Google Gemini AI API
-
-**Frontend:**
-- React (Hooks)
-- Vite
-- React Router
-- Tailwind CSS v4
-- shadcn/ui
-- Lucide React (icons)
+**Backend:** Node.js, Express.js, MySQL, Axios, Cheerio  
+**AI & Search:** Google Gemini API, Google Custom Search API  
+**Frontend:** React, Vite, Tailwind CSS, shadcn/ui
 
 ## PROJECT STRUCTURE
 
 ```
-beyondchats_part/
-├── backend/
-│   ├── src/
-│   │   ├── app.js                    - Express app configuration
-│   │   ├── server.js                 - Server entry point
-│   │   ├── config/
-│   │   │   └── db.js                 - MySQL connection pool
-│   │   ├── controllers/
-│   │   │   └── article.controller.js - Article CRUD operations
-│   │   ├── models/
-│   │   │   └── article.model.js      - Database queries
-│   │   ├── routes/
-│   │   │   └── article.routes.js     - API route definitions
-│   │   ├── services/
-│   │   │   ├── scrape.service.js     - Web scraping logic
-│   │   │   ├── search.service.js     - Google Search integration
-│   │   │   └── llm.service.js        - Gemini AI rewriting
-│   │   └── scripts/
-│   │       ├── scrapeBlogs.js        - Phase 1: Scrape articles
-│   │       └── updateArticles.js     - Phase 2: Rewrite articles
-│   └── package.json
-│
-└── frontend/
-    ├── src/
-    │   ├── App.jsx                    - Routing configuration
-    │   ├── main.jsx                   - React entry point
-    │   ├── index.css                  - Tailwind v4 + design tokens
-    │   ├── components/
-    │   │   ├── ArticleList.jsx        - Article listing page
-    │   │   ├── ArticleDetail.jsx     - Article detail with tabs
-    │   │   ├── Layout.jsx             - Main layout wrapper
-    │   │   ├── ThemeToggle.jsx        - Theme switcher
-    │   │   └── ui/                    - shadcn/ui components
-    │   ├── contexts/
-    │   │   └── ThemeContext.jsx       - Theme state management
-    │   └── services/
-    │       └── api.js                 - API client
-    └── package.json
+backend/
+- config/        – Database configuration  
+- models/        – Database queries  
+- services/      – Scraping, search, and AI logic  
+- scripts/       – Phase-based workflows  
+- routes/        – REST API routes  
+
+frontend/
+- components/    – UI components  
+- services/      – API client  
+- pages/         – Screens
 ```
 
-> The project follows a clear separation of concerns:  
+> The project follows a clear separation of:  
 > - Backend handles scraping, AI processing, and data persistence  
 > - Frontend focuses on presentation and user interaction  
 > - Scripts are organized for sequential workflow (scrape → update)
@@ -105,11 +59,10 @@ This is a content management system with a two-phase workflow. The architecture 
 5. Gemini rewrites the article with improved clarity and depth
 6. Stores updated content and reference links in the database
 
-### Frontend Display
-1. React app fetches articles from the REST API
-2. Article list displays all articles with status badges
-3. Article detail page shows original and updated versions in tabs
-4. Reference links are displayed for updated articles
+### Frontend
+- Displays all articles
+- Allows comparison of original and rewritten content
+- Shows reference links for rewritten articles
 
 ## PREREQUISITES
 
@@ -218,25 +171,13 @@ This will process all articles that haven't been updated yet, find competitor ar
 
 ## API ENDPOINTS
 
-- `GET /` – Health check
 - `GET /api/articles` – Get all articles
 - `GET /api/articles/:id` – Get article by ID
 - `POST /api/articles` – Create new article
 
 ## SUMMARY
 
-This project demonstrates:
-
-- **Web Scraping** – Reliable content extraction from dynamic websites using Cheerio
-- **AI Integration** – Leveraging Google Gemini for intelligent content enhancement
-- **Search Integration** – Using Google Custom Search API for competitor research
-- **Full-Stack Architecture** – Clean separation between backend services and frontend UI
-- **Database Design** – Efficient storage of original and enhanced content versions
-- **Error Handling** – Robust retry logic and error recovery for external APIs
-- **Modern Frontend** – React with modern tooling (Vite, Tailwind, shadcn/ui)
-- **User Experience** – Intuitive interface for comparing original and updated content
-
-The implementation prioritizes reliability, maintainability, and user experience while handling the complexities of web scraping, AI processing, and real-world API integrations.
+This project demonstrates end-to-end handling of web scraping, AI-assisted content rewriting, and full-stack application design using a modern JavaScript stack.
 
 ## AUTHOR
 
