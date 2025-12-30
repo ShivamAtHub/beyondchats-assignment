@@ -124,7 +124,7 @@ This is a content management system with a two-phase workflow. The architecture 
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/ShivamAtHub/beyondchats-assignment.git
 cd beyondchats_part
 ```
 
